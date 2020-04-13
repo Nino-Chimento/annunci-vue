@@ -14,6 +14,30 @@ Vue.component('elenco-annunci', {
         }
     }
 });
+//--------secondo componente---------
+
+Vue.component('selezione-annunci', {
+    template: '<div>\
+         <form method="post" action="/" ref="input">\
+             <fieldset>\
+                 <legend>Seleziona la tipologia di annuncio</legend>\
+                 <input type="radio" v-model="tipo" value="vendita" v-on:focus="updateValue($event.target.value)"> Vendite\
+        <input type="radio" v-model="tipo" value="affitto" v-on:focus="updateValue($event.target.value)"> Affitti\
+             </fieldset >\
+         </form >\
+    <h1>Immobili in {{ tipo }}</h1>\
+     </div > ',
+    data: function () {
+        return {
+            tipo: 'vendita'
+        }
+    },
+    methods: {
+        updateValue: function (value) {
+            this.$emit('update:tipo', value)
+        }
+    },
+});
 
 var vm = new Vue({
     el: '#main-app',
