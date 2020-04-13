@@ -1,0 +1,58 @@
+
+<<head>
+    <title>Vue Tutorial</title>
+    <link rel="stylesheet" href="foundation.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Oswald:700" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+    
+                    <h1 class="site-title text-center">Vue </h1>
+                   
+        </header>
+        <section id="main-app full-width text-center">
+          
+
+            <section id="main-app">
+                <form method="post" action="/">
+                    <fieldset>
+                        <legend>Seleziona la tipologia di annuncio</legend>
+                        <input type="radio" v-model="tipologia" value="vendita"> Vendite
+                        <input type="radio" v-model="tipologia" value="affitto"> Affitti
+                    </fieldset>
+                </form>
+                <h1>Immobili in {{tipologia}}</h1>
+                <ul v-if="annunci.length > 0" >
+                    <li class="small-12 large-4 columns" v-for="(annuncio, i) in annunci" v-bind:key="i">
+                        <img :src="annuncio.acf.immagine_1">
+                        <p>{{annuncio.title.rendered}}</p>
+                        <p>{{annuncio.acf.indirizzo}} - {{annuncio.acf.citta}}</p>
+                        <p>€ {{annuncio.acf.richiesta}} - $ {{Number(annuncio.acf.richiesta) * 1.22717}}</p>
+                      
+                        <p>{{ nuovaSomma() }}</p>
+                    </li>
+                </ul>
+                <p v-else> Nessun annuncio </p>
+            </section>
+        </section>
+        <footer class="site-footer">
+            <ul>
+                <li>
+                    <h3>Contatti</h3>
+                </li>
+                <li>Facebook</li>
+                <li>LinkedIn</li>
+                <li>Google+</li>
+            </ul>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
+ 
