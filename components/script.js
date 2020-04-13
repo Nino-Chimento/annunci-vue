@@ -1,6 +1,13 @@
 // ----------  primo componente---------
 Vue.component('elenco-annunci', {
-    template: '',
+    template: '<ul v-if="immobili.length > 0">\
+        <li class="small-12 large-4 columns" v-for="(annuncio, i) in immobili" v-bind:key="i">\
+            <img :src="annuncio.acf.immagine_1">\
+            <p>{{annuncio.title.rendered}}</p>\
+            <p>{{annuncio.acf.indirizzo}} - {{annuncio.acf.citta}}</p>\
+            <p>&euro; {{annuncio.acf.richiesta}} - $ {{Number(annuncio.acf.richiesta) * 1.2187}}</p>\
+        </li>\
+    </ul>',
     props: {
         immobili: {
             type: Array
